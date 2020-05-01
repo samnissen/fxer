@@ -1,0 +1,5 @@
+:exchange:
+  :default_source_key: :ecb
+  :valid_source_keys:
+    - :ecb
+  :default_permission: true

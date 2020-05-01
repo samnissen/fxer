@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'fxer'
+
+#
+# fxer is a simple command line tool to exchange data
+# using the default exchange rate data source and an
+# optional local store. See more documentation in Fxer::Exchange,
+# and in the README.
+#
+
+path = ENV['FXER_RATE_DATA_PATH']
+opts = { :store => path }
+
+exchanger = Fxer::Exchange.new(opts)
+puts exchanger.convert_at_date(ARGV[0], ARGV[1], ARGV[2])

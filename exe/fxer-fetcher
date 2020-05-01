@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'fxer'
+
+#
+# fxer-fetcher is a commandline pre-fetcher for exchange rate data.
+# with only one data source, this is intentionally kept simple.
+# fxer-fetcher downloads the most recent available data from the ECB.
+#
+
+DEFAULT_FETCHER_DOWNLOAD_CLASS_NAME = "ecb"
+
+case "#{ARGV[0] || DEFAULT_FETCHER_DOWNLOAD_CLASS_NAME}".to_sym
+when :ecb
+  puts "\n\n\tFetching ECB data..."
+  Fxer::Fetcher::Ecb.download
+  puts "\tSuccess!\n\n"
+else
+  raise Fxer::ExchangeRate::INVALID_SOURCE_MESSAGE
+end
